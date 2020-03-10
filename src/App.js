@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Homepage from './pages/homepage/homepage.component';
-import { Route, Switch } from 'react-router-dom';
-import ShopPage from './pages/shop/shop.component';
-import Header from './components/header/header.component';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up-page/sign-in-and-sign-up-page.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Homepage from "./pages/homepage/homepage.component";
+import { Route, Switch } from "react-router-dom";
+import ShopPage from "./pages/shop/shop.component";
+import Header from "./components/header/header.component";
+import SignInAndSignUpPage from "./pages/sign-in-and-sign-up-page/sign-in-and-sign-up-page.component";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,17 +19,18 @@ function App() {
             id: snapShot.id,
             ...snapShot.data()
           });
-
-          // console.log('Current User State:', currentUser);
         });
       } else {
-        setCurrentUser(userAuth);
+        setCurrentUser(currentUser);
       }
     });
     return () => {
       unsubscribeFromAuth();
     };
   }, []);
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
 
   return (
     <div>

@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import FormInput from '../form-input/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
+import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 const SignUp = () => {
   const [state, setState] = useState({
-    displayName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
   });
 
   const handleSubmit = async e => {
@@ -24,12 +24,12 @@ const SignUp = () => {
         email,
         password
       );
-      createUserProfileDocument(user, { displayName });
+      await createUserProfileDocument(user, { displayName });
       setState({
-        email: '',
-        password: '',
-        displayName: '',
-        confirmPassword: ''
+        email: "",
+        password: "",
+        displayName: "",
+        confirmPassword: ""
       });
     } catch (error) {
       console.error(error);
