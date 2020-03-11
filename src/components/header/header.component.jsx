@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.style.scss';
 import { auth } from '../../firebase/firebase.utils';
 import { useSelector } from 'react-redux';
+import CartIcon from '../cart-icon/cart-icon.component';
 
 const Header = () => {
   const currentUser = useSelector(state => state.user.currentUser);
@@ -29,6 +30,7 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
     </div>
   );
