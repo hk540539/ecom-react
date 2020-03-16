@@ -1,13 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
-import './header.style.scss';
-import { auth } from '../../firebase/firebase.utils';
-import { useSelector } from 'react-redux';
-import CartIcon from '../cart-icon/cart-icon.component';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../../assets/crown.svg";
+import "./header.style.scss";
+import { auth } from "../../firebase/firebase.utils";
+import { useSelector } from "react-redux";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = () => {
-  const currentUser = useSelector(state => state.user.currentUser);
+  // const currentUser = useSelector(state => state.user.currentUser);
+  // const hidden = useSelector(state => state.cart.hidden);
+  const { currentUser, hidden } = useSelector(state => ({
+    currentUser: state.user.currentUser,
+    hidden: state.cart.hidden
+  }));
 
   return (
     <div className="header">
@@ -32,6 +38,7 @@ const Header = () => {
         )}
         <CartIcon />
       </div>
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };
