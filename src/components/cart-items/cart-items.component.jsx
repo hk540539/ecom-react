@@ -7,7 +7,7 @@ const CartItems = ({ item: { imageUrl, name, price, quantity } }) => (
     <div className="item-details">
       <span className="name">{name}</span>
       <span className="price">
-        {quantity} x ${price}
+        {quantity} x &#8377;{price}
       </span>
     </div>
   </div>
